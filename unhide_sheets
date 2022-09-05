@@ -1,0 +1,10 @@
+Sub Unhide_Sheets_Containing()
+Dim ws As Worksheet
+    
+    For Each ws In ActiveWorkbook.Worksheets
+        If InStr(ws.Name, "pivot") > 0 Then
+            ws.Visible = xlSheetVisible
+        End If
+    Next ws
+
+End Sub
