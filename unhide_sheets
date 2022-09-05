@@ -1,3 +1,25 @@
+
+==============
+# in immediate tab
+
+For Each ws In Sheets:ws.Visible=True:Next
+
+=================
+# in module
+
+Sub Unhide_Multiple_Sheets()
+Dim ws As Worksheet
+    
+    For Each ws In ActiveWorkbook.Worksheets
+        
+        ws.Visible = xlSheetVisible
+    
+    Next ws
+
+End Sub
+
+# unhide sheets with specific name(s)
+
 Sub Unhide_Sheets_Containing()
 Dim ws As Worksheet
     
