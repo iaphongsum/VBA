@@ -1,0 +1,30 @@
+Sub copy_data()
+'
+' copy_data Macro
+'
+
+'
+    Sheets("NewData#1").Select
+    Range("A4").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Selection.Copy
+    Sheets("SummaryData").Select
+    Range("A3").Select
+    Selection.End(xlDown).Select
+    'Note: because the botton is arbitrary, so we switch to relative; be sure to switch back right after
+    ActiveCell.Offset(1, 0).Range("A1").Select
+    ActiveSheet.Paste
+    Sheets("NewData#2").Select
+    Range("A4").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("SummaryData").Select
+    Selection.End(xlDown).Select
+    'Note: because the botton is arbitrary, so we switch to relative; be sure to switch back right after
+    ActiveCell.Offset(1, 0).Range("A1").Select
+    ActiveSheet.Paste
+    Range("A3").Select
+End Sub
