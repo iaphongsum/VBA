@@ -1,0 +1,8 @@
+' utilise "Go To Special" to select blanks/formula/etc to work with dynamic macros
+
+'use Object Browser to find the class & member (object) and its belonging method (like delete or show sth)
+' example below
+
+? range('C4').Comment.Author
+
+'range is class, Comment is member, Author is member of Comment (so works as method)
