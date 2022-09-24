@@ -37,3 +37,41 @@ Worksheets("Purpose").Select 'Worksheets("Purpose").Activate
 Range("C8").Select
 
 End Sub
+
+
+*methods to find last row of your range
+
+Sub range_LastRow()
+
+Workbooks("S4_ReferencingRanges.xlsm").Activate
+Worksheets("Range_Reference").Activate
+
+'Clear content and color format
+Range("K6:K12").ClearContents
+Range("A5", "A" & Cells(Rows.Count, 1).End(xlUp).Row).EntireRow.Interior.Color = Excel.Constants.xlNone
+
+'Range("K6").Value = Range("A4").End(xlDown).Row
+
+Range("K6").Value = Range("A" & Rows.Count).End(xlUp).Row
+
+Range("K7").Value = Range("A" & Rows.Count).End(xlUp).Row + 1
+
+'Range("K8").Value = Range("A4").End(xlToRight).Column
+
+Range("K8").Value = Cells(4, Columns.Count).End(xlToLeft).Column
+
+Range("K9").Value = Range("B10").CurrentRegion.Address
+
+Range("K10").Value = Range("B10").CurrentRegion.Rows.Count - 1
+
+Range("K11").Value = Cells.SpecialCells(xlCellTypeLastCell).Row
+
+Range("K12").Value = ActiveSheet.UsedRange.Rows.Count
+
+'Paint the last row red
+
+Range("A" & Rows.Count).End(xlUp).EntireRow.Interior.Color = VBA.ColorConstants.vbRed
+
+
+
+End Sub
