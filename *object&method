@@ -1,12 +1,12 @@
-' utilise "Go To Special" to select blanks/formula/etc to work with dynamic macros
+*utilise "Go To Special" to select blanks/formula/etc to work with dynamic macros
 
-'use Object Browser to find the class & member (object property) and its belonging method (like delete or show sth)
-'range is class, Comment is member, Author is member of Comment (so works as method)
-' example below
+*use Object Browser to find the class & member (object property) and its belonging method (like delete or show sth)
+*range is class, Comment is member, Author is member of Comment (so works as method)
+* example below
 
 ? range('C4').Comment.Author
 
-'Range reference
+*Range reference
 
 ? Range("A1", "D5").Value = "fillText"
 ? Range("A" & 2, "D" & 2) = "1st"
@@ -16,3 +16,24 @@
 ? Columns("A:B").ColumnWidth = 50
 ? Cells.Columns.AutoFit
 ? Range("someCells").VALUE = "fillText"
+
+*Useful Range Property Methods
+
+Sub range_property_method()
+' range_property_method Macro
+' Example of Property
+Range("B6").Value = Range("B5").Value
+Range("B7").Value = Range("B5").Text
+
+'Example of Method
+
+Range("B7").Delete xlShiftToLeft
+
+Range("B9").EntireRow.Delete
+
+'Select cell A1 on Tab "Purpose"
+
+Worksheets("Purpose").Select
+Range("C8").Select
+
+End Sub
