@@ -33,7 +33,7 @@ Range("B9").EntireRow.Delete
 
 'Select cell A1 on Tab "Purpose"
 
-Worksheets("Purpose").Select
+Worksheets("Purpose").Select 'Worksheets("Purpose").Activate
 Range("C8").Select
 
 End Sub
