@@ -108,7 +108,7 @@ Range("A1").Select
 End Sub
 
 **************************
-*Property Referencing Worksheets
+*Properly Referencing Worksheets
 
 Sub worksheet_reference()
 
