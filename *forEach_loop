@@ -1,0 +1,26 @@
+*************
+**use for each loop to protect each sheet in the workbook 
+
+Sub protect_all_sheet()
+
+Dim Sh As Worksheet
+    
+For Each Sh In ThisWorkbook.Worksheets
+    
+    Sh.Protect Password:="test", AllowFormattingCells:=True, AllowFormattingColumns:=True, _
+    AllowFormattingRows:=True
+
+Next Sh
+
+End Sub
+
+Sub unprotect_all_sheet()
+
+Dim Sh As Worksheet
+For Each Sh In ThisWorkbook.Worksheets
+    Sh.Unprotect "test"
+    Debug.Print Sh.Name
+
+Next Sh
+
+End Sub
