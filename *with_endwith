@@ -1,0 +1,17 @@
+***************
+*with clause to change font with ease
+
+Sub with_change_font()
+
+Dim myRange As Range
+Set myRange = Range("A10", "A" & Cells(Rows.Count, 1).End(xlUp).Row)
+'Debug.Print myRange.Address
+
+With myRange.Font
+    .Name = "arial"
+    .Size = 14
+    .Bold = True
+
+End With
+
+End Sub
