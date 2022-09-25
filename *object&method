@@ -122,5 +122,33 @@ ShSource.Range("A4").CurrentRegion.Copy ShDest.Range("A5")
 
 ShDest.Range("A5").CurrentRegion.Delete
 
+End Sub
+
+********************************
+*Properly Referencing Worksheets
+
+Sub workbook_reference()
+
+'find the path of the current active workbook
+
+'Debug.Print ActiveWorkbook.FullName
+'Debug.Print Workbooks(2).Path
+
+'if the workbook name is given
+
+Application.Workbooks.Open "C:\Users\fang.yeh\Downloads\VBA\deskbook.xlsx"
+
+Workbooks("deskbook.xlsx").Sheets(1).Range("A4") = "Let me copy the data here."
+
+'work with the workbook where VBA code is written
+
+'ThisWorkbook.Worksheets("copy_resize").Range("A4").CurrentRegion.Copy Workbooks("deskbook.xlsx").Sheets(1).Range("A5")
+
+'use code name for the workbook/worksheet
+
+ShSource.Range("A4").CurrentRegion.Copy Workbooks("deskbook.xlsx").Sheets(1).Range("A5")
+
+ActiveWorkbook.Close True
+
 
 End Sub
