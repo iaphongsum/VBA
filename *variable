@@ -42,3 +42,10 @@ NewRange.Font.Bold = True
 NewRange.Interior.Color = VBA.RGB(255, 250, 201)
 
 End Sub
+
+*********************
+* scope of a variable
+
+'inside sub = inside procedure
+'outside sub = inside the currnet module
+'public + outside sub = applies in all modules
