@@ -1,0 +1,20 @@
+***********
+* variable & constraint
+
+Public Sub DefiningVariables()
+
+' create variable
+Dim LastRow As Long, FirstRow As Long
+LastRow = Rows.Count
+Debug.Print LastRow
+
+' create array
+
+Dim myMonth(1 To 12) As String
+myMonth(1) = "Jan"
+Dim mySales(1 To 12, 1 To 3) As Variant
+
+'create constant
+Const myScenario AS String = "actual"
+
+End Sub
