@@ -6,6 +6,7 @@
 
 ? range('C4').Comment.Author
 
+****************************************
 *Range reference
 
 ? Range("A1", "D5").Value = "fillText"
@@ -17,6 +18,7 @@
 ? Cells.Columns.AutoFit
 ? Range("someCells").VALUE = "fillText"
 
+****************************************
 *Useful Range Property Methods
 
 Sub range_property_method()
@@ -38,7 +40,7 @@ Range("C8").Select
 
 End Sub
 
-
+****************************************
 *methods to find last row of your range
 
 Sub range_LastRow()
@@ -72,6 +74,35 @@ Range("K12").Value = ActiveSheet.UsedRange.Rows.Count
 
 Range("A" & Rows.Count).End(xlUp).EntireRow.Interior.Color = VBA.ColorConstants.vbRed
 
+End Sub
 
+****************************************
+*Copy and resize a variety of size range
+
+
+Sub copy_resize_ranges()
+
+Workbooks("S4_ReferencingRanges.xlsm").Activate
+Worksheets("Copy_Resize").Activate
+
+Range("J4").CurrentRegion.ClearContents
+
+'simple copy
+
+Range("A4").CurrentRegion.Copy Range("J4")
+
+'pastespecial method
+
+Range("A4").CurrentRegion.Copy
+Range("J20").PasteSpecial xlPasteValuesAndNumberFormats
+Range("J20").PasteSpecial xlPasteComments
+
+
+'resize property with paste method
+
+Range("A4").CurrentRegion.Offset(1, 0).Resize(Range("A4").CurrentRegion.Rows.Count - 1).Copy
+Range("A20").PasteSpecial xlPasteValuesAndNumberFormats
+Application.CutCopyMode = False
+Range("A1").Select
 
 End Sub
