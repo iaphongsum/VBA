@@ -106,3 +106,21 @@ Application.CutCopyMode = False
 Range("A1").Select
 
 End Sub
+
+**************************
+*Property Referencing Worksheets
+
+Sub worksheet_reference()
+
+'use code name to interact with the designated sheet
+
+ShDest.Range("A4").Value = "fill in the data below"
+
+'Copy data from another sheet
+
+ShSource.Range("A4").CurrentRegion.Copy ShDest.Range("A5")
+
+ShDest.Range("A5").CurrentRegion.Delete
+
+
+End Sub
