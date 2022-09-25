@@ -1,0 +1,50 @@
+*******************
+Sub Hardcoded_Workbook_copy()
+
+    '1: Save the current workbook
+    ThisWorkbook.Save
+
+    '2: Select all sheets, copy and paste special all cells in the sheets
+    Sheets.Select
+    Cells.Copy
+    Cells.PasteSpecial xlPasteValues
+
+    'if you'd like to deselect all sheets
+
+    '3: Save the workbook with SaveAs (be careful you don't just SAVE, but SAVEAS)
+    '4: Save it in the same directory as this workbook but before the name put "HC_"
+    'Bonus: Add today's date in the form of "yymmdd" after "HC_" so HC_yymmdd_S4_ReferencingRanges"
+
+    ThisWorkbook.SaveAs Filename:=ThisWorkbook.Path & "\HC_" & VBA.Format(VBA.Date, "YYMMDD") & "_" & ThisWorkbook.Name
+
+    ' the file name will be "HC_220925_S4_ReferencingRanges"
+    
+End Sub
+
+***********************************
+Sub Hardcoded_Workbook_copy_NoMacros()
+
+    '1: Save the current workbook
+    ThisWorkbook.Save
+
+    '2: Select all sheets, copy and paste special all cells in the sheets
+    Sheets.Select
+    Cells.Copy
+    Cells.PasteSpecial xlPasteValues
+    
+    Application.DisplayAlerts = False
+
+    'if you'd like to deselect all sheets
+
+    '3: Save the workbook with SaveAs (be careful you don't just SAVE, but SAVEAS)
+    '4: Save it in the same directory as this workbook but before the name put "HC_"
+    'Bonus: Add today's date in the form of "yymmdd" after "HC_" so HC_yymmdd_S4_ReferencingRanges"
+
+    ThisWorkbook.SaveAs Filename:=ThisWorkbook.Path & "\HC_" & VBA.Format(VBA.Date, "YYMMDD") & "_" & VBA.Replace(ThisWorkbook.Name, ".xlsm", ""), _
+    FileFormat:=Excel.xlOpenXMLWorkbook
+    
+    'The above turn xlsm into xlsx
+    
+    Application.DisplayAlerts = True
+
+End Sub
