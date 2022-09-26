@@ -1,0 +1,20 @@
+*****(1) save the following in personalised workbook
+
+Sub Macro1()
+
+
+Dim Sh As Worksheet
+
+For Each Sh In Worksheets
+    Sh.Visible = True
+Next Sh
+
+
+End Sub
+
+******(2) save the above code in quick access toolbar as a button
+
+******(3) run the code below in immediate window
+for each sh in worksheets:sh.visible=True:Next sh
+
+*******(4) safe unhidden view as View > Custom 
