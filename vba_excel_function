@@ -1,0 +1,19 @@
+Sub vba_excel_functions()
+
+With ShVEF
+    .Range("B3").Value = VBA.Date
+    .Range("B6").Value = VBA.UCase(.Range("A6").Value)
+    .Range("B7").Value = VBA.LCase(.Range("A7").Value)
+    .Range("B8").Value = VBA.StrConv(.Range("A8"), vbProperCase)
+    .Range("B9").Value = Excel.Application.WorksheetFunction.Proper(.Range("A9").Value)
+    
+    Dim myRange As Range
+    Set myRange = .Range("A13").CurrentRegion
+    
+    .Range("B11").Value = Excel.WorksheetFunction.Max(myRange)
+
+
+    
+End With
+
+End Sub
