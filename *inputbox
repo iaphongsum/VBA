@@ -62,3 +62,26 @@ leave:
 
 
 End Sub
+
+************************excel inputbox with worksheetfunction to find the numeric order
+
+Sub top_3_bids()
+
+Dim myRange As Range
+Dim top1 As Double, top2 As Double, top3 As Double
+
+On Error GoTo Leave
+Set myRange = Application.InputBox(Prompt:="Select the range of numbers to get the top 3 values", Title:="top 3", Type:=8)
+
+If Application.WorksheetFunction.Count(myRange) > 2 Then
+    top1 = Excel.WorksheetFunction.Large(myRange, 1)
+    top2 = Excel.WorksheetFunction.Large(myRange, 2)
+    top3 = Excel.WorksheetFunction.Large(myRange, 3)
+    msgbox "top1: " & top1 & vbNewLine & "top2: " & top2 & vbNewLine & "top3: " & top3 & vbNewLine, , "top3"
+Else
+    msgbox "Please select 3 cells with numbers.", vbInformation
+End If
+
+Leave:
+
+End Sub
