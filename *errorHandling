@@ -1,0 +1,15 @@
+**********use "GoTo" for error handling
+
+Sub simple_goTo()
+
+Range("D3").Value = ""
+If VBA.IsError(Range("B3").Value) Then GoTo Getout
+Range("C3").Value = Range("B3").Value
+
+Exit Sub
+
+Getout:
+Range("D3").Value = "You have an error"
+Range("C3").Value = ""
+
+End Sub
