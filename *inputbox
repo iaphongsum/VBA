@@ -20,3 +20,45 @@ NextEmptyRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
 Range("A" & NextEmptyRow).Value = Excel.WorksheetFunction.Proper(CustomerName)
 
 End Sub
+
+
+********************excel inputbox
+
+Sub excel_inputbox()
+
+Dim CustomerName As String
+Dim NextRow As Long
+Dim CAmount As Long
+
+CustomerName = VBA.Interaction.InputBox("Plz provide customer name", "Action required")
+
+NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+Range("A" & NextRow).Value = Excel.WorksheetFunction.Proper(CustomerName)
+CAmount = Excel.Application.InputBox(Prompt:="Please enter amount", Title:="amount", Type:=1)
+Cells(NextRow, 2).Value = CAmount
+
+End Sub
+
+*********************excel inputbox to capture the info of a range
+
+Sub excel_inputbox_range()
+
+Dim myRange As Range
+Dim cellBlank As Long, cellNum As Long, cellOther As Long
+
+Set myRange = Application.InputBox("Count the number of cells", "Checking cells...", , , , , , 8)
+
+cellBlank = Excel.WorksheetFunction.CountBlank(myRange)
+cellNum = Excel.WorksheetFunction.Count(myRange)
+cellOther = Excel.WorksheetFunction.CountA(myRange) - cellNum
+MsgBox cellBlank & " cells are blank." & vbNewLine _
+& cellNum & " cells have numbers." & vbNewLine _
+& cellOther & " cells are non-numeric."
+
+On Error GoTo leave
+
+
+leave:
+
+
+End Sub
