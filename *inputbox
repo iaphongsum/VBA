@@ -1,0 +1,22 @@
+Sub vba_simple_inputbox()
+
+Dim myInput As String
+myInput = VBA.Interaction.InputBox("Please input subtitle", "subtitle please")
+If myInput = "" Then Exit Sub
+Range("A2").Value = Excel.WorksheetFunction.Proper(myInput)
+
+End Sub
+
+**********************inputbox in the next empty row
+
+Sub vba_input_box()
+
+Dim CustomerName As String
+Dim NextRow As Long
+
+CustomerName = VBA.Interaction.InputBox("Plz provide customer name", "Action required")
+
+NextEmptyRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+Range("A" & NextEmptyRow).Value = Excel.WorksheetFunction.Proper(CustomerName)
+
+End Sub
