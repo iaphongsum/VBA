@@ -1,3 +1,21 @@
+*************simple if
+
+Sub simple_if()
+
+Workbooks("S6_Collections_With_IF_Start.xlsm").Worksheets("if").Activate
+
+If Range("B3").Value <> "" Then
+    Range("C3").Value = Range("B3").Value
+End If
+
+If Range("B4").Value > 0 And Range("B4") <= 400 Then
+    Range("C4").Value = Range("B4").Value
+End If
+
+
+End Sub
+
+
 ************if else if 
 
 Sub protect_special_sheet()
