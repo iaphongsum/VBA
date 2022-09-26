@@ -37,3 +37,22 @@ For Each Sh In ThisWorkbook.Worksheets
 Next Sh
 
 End Sub
+
+*************use case when too many possibilities
+
+Sub simple_case()
+
+Select Case Range("B3").Value
+    Case 1 To 200
+        Range("C3").Value = "Good"
+    Case 0
+        Range("C3").Value = ""
+    Case Is > 200
+        Range("C3").Value = "Excellent"
+    Case Else
+        Range("C3").Value = "Bad"
+    
+    
+End Select
+
+End Sub
