@@ -1,0 +1,21 @@
+************if else if 
+
+Sub protect_special_sheet()
+
+Dim Sh As Worksheet
+    
+For Each Sh In ThisWorkbook.Worksheets
+    
+    If Sh.Name = "Purpose" Then
+        Sh.Protect "test"
+    ElseIf Sh.CodeName = "Sheet1" Then
+        'do nothing
+    Else
+        Sh.Protect Password:="test", AllowFormattingCells:=True, AllowFormattingColumns:=True, _
+        AllowFormattingRows:=True
+
+    End If
+    
+Next Sh
+
+End Sub
