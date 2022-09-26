@@ -1,0 +1,17 @@
+************* if loop inside each loop 
+
+Sub count_if_formula()
+
+Dim cell As Range
+
+Dim countFormula As Long
+
+For Each cell In ActiveSheet.UsedRange
+    If cell.HasFormula Then
+        countFormula = countFormula + 1
+    End If
+Next cell
+
+Range("B6").Value = countFormula
+
+End Sub
