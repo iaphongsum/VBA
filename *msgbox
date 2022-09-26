@@ -1,0 +1,23 @@
+Sub simple_msgbox()
+
+'VBA.Interaction.MsgBox "Hello " & Excel.Application.UserName, , "Welcome!"
+
+MsgBox prompt:="Hello " & Excel.Application.UserName & "." & VBA.Constants.vbNewLine & "Thanks for stopping by.", _
+Title:="Welcome!"
+
+End Sub
+
+*****************if else on message for actions
+
+Sub yes_no_msg()
+
+Dim Answer As VbMsgBoxResult
+
+Answer = MsgBox("are you sure about this", vbYesNo + vbQuestion + vbDefaultButton2, "Clear cells")
+If Answer = vbYes Then
+    Range("A7").CurrentRegion.Clear
+Else
+    Exit Sub
+End If
+
+End Sub
