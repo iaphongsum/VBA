@@ -1,3 +1,5 @@
+**********case converter, max for a region
+
 Sub vba_excel_functions()
 
 With ShVEF
@@ -15,5 +17,19 @@ With ShVEF
 
     
 End With
+
+End Sub
+
+****************date, boolean
+Sub vba_functions()
+
+Range("B3").Value = VBA.Month(VBA.Date)
+Range("B4").Value = VBA.MonthName(VBA.Month(VBA.Date))
+Range("C5").Value = VBA.MonthName(Range("B5"), True)
+
+Range("B9").Value = VBA.IsEmpty(Range("A9"))
+Range("B10").Value = VBA.IsEmpty(Range("A10"))
+Range("B11").Value = VBA.IsEmpty(Range("A11"))
+Debug.Print TypeName(Range("A10").Value)
 
 End Sub
