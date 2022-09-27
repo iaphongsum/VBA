@@ -58,3 +58,33 @@ LastRow = Range("A" & Rows.Count).End(xlUp).Row
 Range("H" & StartRow, "I" & LastRow).ClearContents
 
 End Sub
+
+Sub clear_values_text_loop()
+
+LastRow = Range("A" & Rows.Count).End(xlUp).Row
+Range("H" & StartRow, "I" & LastRow).ClearContents
+
+End Sub
+
+********************reverse delete to avoid row change
+Sub delete_hidden_filtered_row()
+
+Dim r As Long
+
+LastRow = Range("A" & StartRow).CurrentRegion.Rows.Count + StartRow - 2
+For r = LastRow To StartRow Step -1 'interval is -1
+    If Rows(r).Hidden = True Then
+        'Range("H" & r).Value = "X"
+        Rows(r).Delete
+    End If
+Next r
+
+End Sub
+
+Sub copy_filtered_list()
+
+ActiveSheet.AutoFilter.Range.Copy
+Worksheets.Add
+Range("A1").PasteSpecial
+
+End Sub
