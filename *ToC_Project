@@ -1,0 +1,25 @@
+*************basic
+Sub auto_table_contents()
+
+Dim StartCell As Range
+Dim Sh As Worksheet
+
+Set StartCell = Excel.Application.InputBox("Where do you want to insert the table of content?" _
+& vbNewLine & "Please select a cell:", "Insert table of content", , , , , , 8)
+
+'set only one cell
+Set StartCell = StartCell.Cells(1, 1)
+
+'Debug.Print StartCell.Address
+
+For Each Sh In Worksheets
+
+If ActiveSheet.Name <> Sh.Name Then
+    StartCell.Value = Sh.Range("A1").Value
+    Set StartCell = StartCell.Offset(1, 0)
+End If
+
+Next Sh
+
+
+End Sub
