@@ -1,0 +1,24 @@
+
+Private Sub myCalc(ByVal Getvalue As Double, myPercent)
+
+    Getvalue = Getvalue * myPercent
+    MsgBox Getvalue
+    
+End Sub
+
+Sub GetMyValue()
+
+    Dim myValue As Double
+    Dim p As Variant
+    ' assign value and percentage from cells
+    myValue = Range("A8").Value
+    p = Range("B8").Value
+    
+    If Application.WorksheetFunction.IsNumber(p) Then
+        Call myCalc(myValue, p)
+    Else
+        myCalc myValue, 1
+    End If
+    MsgBox myValue
+    
+End Sub
