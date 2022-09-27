@@ -1,11 +1,15 @@
 **********S10_Looping_Start.xlsm
 
+Option Explicit
+Const StartRow As Byte = 10
+Dim LastRow As Long
+
 Sub simple_for()
 
 Dim i As Long
-Dim LastRow As Long
+
 Dim myValue As Double
-Const StartRow As Byte = 10
+
 
 LastRow = Range("A" & StartRow).End(xlDown).Row
 
@@ -15,5 +19,42 @@ If myValue > 400 Then Range("F" & i).Value = myValue + 10
 If myValue < 0 Then Exit For
 
 Next i
+
+End Sub
+
+Sub for_next_loop_in_text()
+
+Dim i As Long 'for looping inside each cell
+Dim myValue As String
+Dim numfound As Long
+Dim textfound As String
+Dim r As Long 'for looping through rows
+
+LastRow = Range("A" & Rows.Count).End(xlUp).Row
+
+
+
+For r = StartRow To LastRow
+    myValue = Range("A" & r).Value
+        For i = 1 To VBA.Len(myValue)
+            If IsNumeric(VBA.Mid(myValue, i, 1)) Then
+                numfound = numfound & Mid(myValue, i, 1)
+            ElseIf Not IsNumeric(VBA.Mid(myValue, i, 1)) Then
+                textfound = textfound & Mid(myValue, i, 1)
+            End If
+        Next i
+    Range("H" & r).Value = textfound
+    Range("i" & r).Value = numfound
+    textfound = ""
+    numfound = 0
+
+Next r
+
+End Sub
+
+Sub clear_values_text_loop()
+
+LastRow = Range("A" & Rows.Count).End(xlUp).Row
+Range("H" & StartRow, "I" & LastRow).ClearContents
 
 End Sub
