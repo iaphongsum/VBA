@@ -1,0 +1,51 @@
+*****************S10_Looping_Start.xlsm 
+****************sheet("do")
+
+Option Explicit
+Dim StartCell As Integer
+
+
+Sub simple_do_until_v1()
+
+StartCell = 8
+Do Until Range("A" & StartCell).Value = ""
+    Range("B" & StartCell).Value = Range("A" & StartCell).Value + 10
+    StartCell = StartCell + 1
+
+Loop
+
+End Sub
+
+Sub simple_do_until_v2()
+
+StartCell = 8
+Do Until StartCell = 14
+    Range("B" & StartCell).Value = Range("A" & StartCell).Value + 10
+    StartCell = StartCell + 1
+
+Loop
+
+End Sub
+
+Sub simple_do_while()
+
+StartCell = 8
+Do While Range("A" & StartCell).Value <> ""
+    Range("C" & StartCell).Value = Range("A" & StartCell).Value + 10
+    StartCell = StartCell + 1
+
+Loop
+
+End Sub
+
+Sub simple_do_until_condition()
+
+StartCell = 8
+Do Until StartCell = 14
+    If Range("A" & StartCell).Value = 0 Then Exit Do
+    Range("D" & StartCell).Value = Range("A" & StartCell).Value + 10
+    StartCell = StartCell + 1
+
+Loop
+
+End Sub
