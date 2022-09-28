@@ -1,3 +1,5 @@
+*********find one match
+
 Sub find_one()
 
 Dim CompId As Range
@@ -10,3 +12,5 @@ Else
 End If
 
 End Sub
+
+**********find many matches
