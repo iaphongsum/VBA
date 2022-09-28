@@ -53,3 +53,24 @@ MsgBox Cust(1) & vbNewLine & Cust(2) & vbNewLine & Cust(3)
 
 
 End Sub
+
+*********************fill the infor for 2 dimensional array
+
+Sub array_2_dimensions()
+
+Dim MonthInfo(1 To 12, 1 To 2) As Variant
+Dim r As Byte
+Dim c As Byte
+Const startRow As Long = 4
+
+'fill up the rows
+For r = 1 To 12
+    For c = 1 To 2
+'fill up the columns
+        MonthInfo(r, c) = Cells(r + startRow, c).Value
+    Next c
+Next r
+
+MsgBox MonthInfo(3, 2)
+
+End Sub
