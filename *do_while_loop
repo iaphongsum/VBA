@@ -49,3 +49,18 @@ Do Until StartCell = 14
 Loop
 
 End Sub
+
+*************force user to type until condition satisfies
+
+Sub input_number_only()
+
+Dim myAnswer As String
+
+Do While IsNumeric(myAnswer) = False
+
+    myAnswer = VBA.InputBox("Please input quantity")
+    If IsNumeric(myAnswer) Then MsgBox ("Well done!")
+    
+Loop
+
+End Sub
