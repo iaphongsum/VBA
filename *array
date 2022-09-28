@@ -1,0 +1,36 @@
+*******************S11_Arrays_Start.xlsm
+
+Option Explicit
+
+Sub array_one_dimension()
+
+Dim MonthArray(1 To 12) As String
+Dim i As Byte
+Dim r As Long
+
+
+'strategy 1 to fill in the array: crawl the range from A5 to A16
+'For i = 1 To 12
+'    MonthArray(i) = Range("A" & i + 4).Value
+'Next i
+
+'strategy 2 to fill in the array: name the array first, then assign the variable to it
+For i = 1 To 12
+    MonthArray(i) = Range("monthRange").Cells(i, 1).Value
+Next i
+
+'write array back to excel in horizontal order
+Range("C5:N5").Value = MonthArray
+'write array back to excel in vertical order
+Range("C5:C16").Value = Excel.WorksheetFunction.Transpose(MonthArray)
+
+'create an array that leaves out 4 rows between each month
+For i = LBound(MonthArray) To UBound(MonthArray)
+    Range("E7").Offset(r, 0).Value = MonthArray(i)
+    r = r + 5
+
+Next i
+
+
+
+End Sub
