@@ -14,3 +14,33 @@ End If
 End Sub
 
 **********find many matches
+
+Sub many_finds()
+
+Dim CompId As Range
+Dim i As Byte
+Dim FirstMatch As Variant
+
+Range("D3:D6").ClearContents
+
+Set CompId = Range("A:A").Find(What:=Range("B3").Value, LookIn:=xlValues, lookat:=xlWhole)
+
+i = 3
+
+If Not CompId Is Nothing Then
+    Range("D" & i).Value = CompId.Offset(0, 4).Value
+    FirstMatch = CompId.Address
+    
+    Do
+    Set CompId = Range("A:A").FindNext(CompId)
+    If CompId.Address = FirstMatch Then Exit Do
+    i = i + 1
+    Range("D" & i).Value = CompId.Offset(0, 4).Value
+    Loop
+    
+Else
+    MsgBox "company id not found!"
+End If
+
+End Sub
+
