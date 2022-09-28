@@ -74,3 +74,21 @@ Next r
 MsgBox MonthInfo(3, 2)
 
 End Sub
+
+********************* "arrayVariant"
+
+Sub write_to_variant_array()
+
+Dim QuantityValue As Variant
+Dim r As Long
+
+QuantityValue = Range("quantityTBL").Value
+
+For r = 1 To UBound(QuantityValue)
+    QuantityValue(r, 1) = QuantityValue(r, 1) + 10
+Next r
+
+Range("quantityTBL").Value = QuantityValue
+
+End Sub
+
