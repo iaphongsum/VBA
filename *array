@@ -31,6 +31,25 @@ For i = LBound(MonthArray) To UBound(MonthArray)
 
 Next i
 
+End Sub
+
+******************preserve array while redim the array
+
+
+Sub array_preserve()
+
+Dim Cust() As String 'create a dynamic array
+ReDim Cust(1 To 2)
+
+Cust(1) = "pikachu"
+Cust(2) = "hacker"
+
+'ReDim Cust(1 To 3)
+ReDim Preserve Cust(1 To 3)
+
+Cust(3) = "Pes"
+MsgBox Cust(1) & vbNewLine & Cust(2) & vbNewLine & Cust(3)
+
 
 
 End Sub
