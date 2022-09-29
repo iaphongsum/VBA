@@ -1,0 +1,41 @@
+*********************** "S12_Folders_Files_Start.xlsm" Sheet("Dir")
+
+Sub file_exists()
+
+Dim FileName As String
+
+FileName = VBA.FileSystem.Dir("C:\Users\fang.yeh\Downloads\VBA\exercise\S2_*Start.xlsx?")
+
+If FileName = VBA.Constants.vbNullString Then
+    MsgBox "file does not exist"
+Else
+    Workbooks.Open "C:\Users\fang.yeh\Downloads\VBA\exercise\" & FileName
+End If
+
+
+End Sub
+
+Sub path_exists()
+
+
+Dim Path As String
+Dim Folder As String
+Dim Answer As VbMsgBoxResult
+
+Path = "C:\Users\fang.yeh\Downloads\VBA\exercise\S12"
+Folder = Dir(Path, vbDirectory)
+
+If Folder = vbNullString Then
+    Answer = MsgBox("Path does not exist. Would you like to create it?", vbYesNo, "Create Path")
+    Select Case Answer
+        Case vbYes
+            VBA.FileSystem.MkDir (Path)
+        Case Else
+            Exit Sub
+    End Select
+Else
+    MsgBox "Folder exists!"
+End If
+
+    
+End Sub
