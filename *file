@@ -39,3 +39,29 @@ End If
 
     
 End Sub
+
+
+*********************** Sheet("SelectFile")
+
+Sub get_data_from_file()
+
+
+Dim FileToOpen As Variant
+Dim openbook As Workbook
+
+Application.ScreenUpdating = False
+
+
+FileToOpen = Application.GetOpenFilename(Title:="Browse for your file and import range", FileFilter:="Excel Files(*.xls*), *xls*")
+
+If FileToOpen <> False Then
+    Set openbook = Application.Workbooks.Open(FileToOpen)
+    openbook.Sheets(1).Range("A1:E20").Copy
+    ThisWorkbook.Worksheets("SelectFile").Range("A10").PasteSpecial xlPasteValues
+    openbook.Close False
+    
+End If
+
+Application.ScreenUpdating = True
+
+End Sub
