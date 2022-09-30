@@ -1,0 +1,32 @@
+**********************S12_Folders_Files_Start
+
+Sub export_to_file()
+
+Dim FileName As String
+Dim ExpRange As Range
+Dim ExpRow As Range
+Dim ExpCell As Range
+Dim myValue As Variant
+
+FileName = ThisWorkbook.Path & "\ProjectActivity.csv"
+Open FileName For Output As #1
+
+Set ExpRange = Sheet7.Range("A6").CurrentRegion.Rows
+'Debug.Print ExpRange.Count
+
+For Each ExpRow In ExpRange
+    For Each ExpCell In ExpRow.Cells
+        myValue = myValue & ExpCell.Value & ";"
+    Next ExpCell
+    myValue = Left(myValue, Len(myValue) - 1)
+    Debug.Print myValue
+    
+    Print #1, myValue
+    
+    myValue = ""
+    
+Next ExpRow
+
+Close #1
+
+End Sub
