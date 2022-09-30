@@ -1,0 +1,33 @@
+***S13_Formulas_Tables_Pivot_Start
+
+Sub work_with_tables()
+
+'Debug.Print Range("CompTable[Quantity]").Address
+'Debug.Print Range("CompTable").Address
+
+Dim myTable As ListObject
+Set myTable = shTable.ListObjects("comptable")
+
+'address of the table
+'Debug.Print myTable.Range.Address
+'Debug.Print myTable.DataBodyRange.Address
+
+'row of the table
+'Debug.Print myTable.Range.Rows.Count
+'Debug.Print myTable.DataBodyRange.Rows.Count
+
+'Debug.Print myTable.ListColumns(5).DataBodyRange.Address
+'Debug.Print myTable.ListColumns("quantity").DataBodyRange.Address
+'Debug.Print myTable.ListRows(5).Range.Address
+
+'Refer to the header
+'Debug.Print myTable.HeaderRowRange.Address
+
+'insert new row to the end or in between
+'myTable.ListRows.Add 2
+'myTable.ListColumns.Add
+'myTable.ListColumns(myTable.ListColumns.Count).Name = "New"
+
+myTable.DataBodyRange(1, 6).FormulaR1C1 = "=IF(VALUE(LEFT(RC[-4], 1))=8, RC[-1]-50, """")"
+
+End Sub
