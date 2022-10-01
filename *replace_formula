@@ -1,0 +1,13 @@
+*S13_Formulas_Tables_Pivot_Start.xlsm
+
+Sub replace_formula()
+
+    Dim cell As Range
+    Dim FormulaRange As Range
+    
+    Set FormulaRange = Cells.SpecialCells(xlCellTypeFormulas)
+    For Each cell In FormulaRange
+        cell.Formula = "=iferror(" & VBA.Mid(cell.Formula, 2) & ", """")"
+    Next cell
+    
+End Sub
