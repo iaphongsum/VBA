@@ -1,0 +1,13 @@
+Private Sub Worksheet_Change(ByVal Target As Range)
+    
+    'option 1: when we only check one cell
+'    If Target.Address = "$F$7" Then
+'        Range("$F$8").Value = "Please select..."
+'    End If
+
+    'option 2: when checking multiple cells, use intersect
+    If Not Application.Intersect(Target, Range("F7")) Is Nothing Then
+        Range("$F$8").Value = "Please select..."
+    End If
+    
+End Sub
