@@ -1,0 +1,37 @@
+*S15
+
+Sub create_pdf()
+
+    Dim PDFTable As ListObject
+    Dim PDFSheets() As String
+    Dim c As Byte 'number of tabs to be exported
+    Dim FileName As String
+    
+    On Error GoTo Handle:
+    
+    FileName = ThisWorkbook.Path & "\PDFExport"
+    
+    Set PDFTable = Worksheets("PDF").ListObjects("PDFTable")
+    'redefine the size of pdfsheet()
+    ReDim PDFSheets(1 To PDFTable.DataBodyRange.Rows.Count)
+    
+    For c = 1 To UBound(PDFSheets)
+        PDFSheets(c) = PDFTable.DataBodyRange(c, 1).Value
+        
+    Next c
+    Worksheets(PDFSheets).Select
+    ActiveSheet.ExportAsFixedFormat xlTypePDF, FileName
+    Worksheets("PDF").Select
+    MsgBox "PDF file was created."
+    
+    Exit Sub 'is a must before the error handle
+    
+Handle:
+    If Err.Number = 9 Then
+        MsgBox "tab name is wrong"
+    Else
+        MsgBox "It's an error"
+    End If
+    
+
+End Sub
