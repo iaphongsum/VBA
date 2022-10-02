@@ -1,0 +1,9 @@
+Private Sub Worksheet_Change(ByVal Target As Range)
+
+If Not Excel.Intersect(Target, Columns("A:F")) Is Nothing Then
+    Worksheets("PivotReport").PivotTables("PivotComp").PivotCache.Refresh
+    MsgBox "Refresh!"
+End If
+
+
+End Sub
