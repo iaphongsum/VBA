@@ -13,6 +13,8 @@ Sub Import_Sales()
     Const StartRowTemp = 4  ' if start row on company templates change, update this line
     Const CompanyRng As String = "C2"
     Dim CompanyImported() As String
+    Dim TaskRow As Long
+    
     Call Entry_Point
  
     On Error GoTo Handle:
