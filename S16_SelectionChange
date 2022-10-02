@@ -1,0 +1,8 @@
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+
+    'MsgBox Target.Address
+    'reset the color to black, then change to blue wherever we target
+    Cells.Font.Color = VBA.ColorConstants.vbBlack
+    Target.Font.Color = VBA.ColorConstants.vbBlue
+    
+End Sub
