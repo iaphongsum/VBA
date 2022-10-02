@@ -1,0 +1,57 @@
+*S15
+
+Sub create_PowerPoint_slides()
+
+    Dim PApp As PowerPoint.Application
+    Dim PPress As PowerPoint.Presentation
+    Dim PSlide As PowerPoint.Slide
+    Dim PShape As PowerPoint.Shape
+    Dim PLayout As PowerPoint.CustomLayout
+    Dim toCopy As Range
+    Dim Sh As Worksheet
+    Dim i As Long 'slide counter
+    
+    On Error Resume Next
+    Set PApp = GetObject(, "PowerPoint.Application")
+    On Error GoTo 0
+    'open a new powerpoint session if not open
+    If PApp Is Nothing Then
+        Set PApp = New PowerPoint.Application
+    End If
+    'get presentation
+    If PApp.Presentations.Count = 0 Then
+        Set PPress = PApp.Presentations.Add
+        i = 0
+    Else
+        Set PPress = PApp.ActivePresentation
+        i = PPress.Slides.Count
+        
+    End If
+    
+    Set PLayout = PPress.SlideMaster.CustomLayouts(7)
+    
+    For Each Sh In ThisWorkbook.Worksheets
+        If Sh.Index > 7 Then
+        
+            Set toCopy = Sh.UsedRange
+            Set PSlide = PPress.Slides.AddSlide(i + 1, PLayout)
+            toCopy.CopyPicture xlScreen, xlPicture
+            PSlide.Shapes.Paste
+            Set PShape = PSlide.Shapes(1)
+            With PShape
+                .LockAspectRatio = msoCTrue
+                .Left = 40
+                .Top = 40
+                .Width = 850
+            End With
+            i = i + 1
+        End If
+    Next Sh
+    MsgBox "Your slides have been created."
+    PApp.Visible = True
+    
+    Set PApp = Nothing
+    
+End Sub
+
+
