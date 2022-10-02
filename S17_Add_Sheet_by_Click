@@ -1,0 +1,4 @@
+Private Sub btInsert_Click()
+    Sheets.Add after:=Sheets(Sheets.Count)
+    
+End Sub
