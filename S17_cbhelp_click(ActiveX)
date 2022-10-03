@@ -1,0 +1,7 @@
+Private Sub cbHelp_Click()
+Dim HelpShapes()
+
+HelpShapes = Array("GroupHelp1", "GroupHelp2", "GroupHelp3")
+Me.Shapes.Range(HelpShapes).Visible = Not Me.Shapes.Range(HelpShapes).Visible
+
+End Sub
