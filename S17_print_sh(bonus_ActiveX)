@@ -1,0 +1,22 @@
+Option Explicit
+
+    Sub print_sh()
+        Dim i As Long, c As Long
+        Dim SheetArray() As String
+        With ActiveSheet.ListBoxSh
+            For i = 0 To .ListCount - 1
+                If .Selected(i) Then
+                    ReDim Preserve SheetArray(c)
+                    SheetArray(c) = .List(i)
+                    c = c + 1
+                End If
+                
+            Next i
+            
+        End With
+        
+        Sheets(SheetArray()).PrintPreview
+        'Sheets(SheetArray()).PrintOut
+        
+        
+    End Sub
