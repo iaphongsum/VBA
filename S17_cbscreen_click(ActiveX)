@@ -1,0 +1,23 @@
+
+
+Private Sub cbScreen_Click()
+
+    Application.DisplayFullScreen = Not Application.DisplayFullScreen
+    
+    With Application.ActiveWindow
+        .DisplayHeadings = Not .DisplayHeadings
+        .DisplayWorkbookTabs = Not .DisplayWorkbookTabs
+        .DisplayHorizontalScrollBar = Not .DisplayHorizontalScrollBar
+        .DisplayVerticalScrollBar = Not .DisplayVerticalScrollBar
+        
+    End With
+    
+    If cbScreen.Value Then
+        Me.ScrollArea = "A1:N30"
+    Else
+        Me.ScrollArea = ""
+    End If
+    
+    
+
+End Sub
