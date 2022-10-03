@@ -1,0 +1,11 @@
+Private Sub CBYear_Change()
+    If Val(CBYear.Value) = Year(Date) Then
+        Me.OPBudget.Visible = True
+        Me.OPFC.Visible = True
+    Else
+        Me.OPBudget.Visible = False
+        Me.OPFC.Visible = False
+        shData.Range("H4").Value = False
+        shData.Range("H5").Value = False
+    End If
+End Sub
