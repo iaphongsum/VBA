@@ -1,0 +1,34 @@
+'workbook level
+
+Private Sub Workbook_Open()
+
+If ActiveSheet.Name = "ActiveX" Then
+    Worksheets("Purpose").Select
+    Worksheets("ActiveX").Select
+End If
+
+
+End Sub
+
+'sheet level
+
+Private Sub cbSheet_Change()
+
+    If cbSheet.Value <> "Select a sheet" Then
+        Worksheets(cbSheet.Value).Select
+    End If
+    
+    cbSheet.Value = "Select a sheet"
+    
+End Sub
+
+Private Sub Worksheet_Activate()
+
+    Dim Sh As Worksheet
+    Me.cbSheet.Clear
+    For Each Sh In ThisWorkbook.Worksheets
+        Me.cbSheet.AddItem Sh.Name
+    Next Sh
+
+    
+End Sub
