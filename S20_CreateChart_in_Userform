@@ -1,0 +1,24 @@
+Sub chart_in_form()
+
+    Dim FileName As String
+    Application.ScreenUpdating = False
+    Worksheets("Create").Select
+    Range("A6: B18").Select
+    
+    FrmChart.LbAverage = VBA.FormatNumber(Application.WorksheetFunction.Average(Range("B7:B18")), 2)
+    
+    Call my_column_chart
+    FileName = ThisWorkbook.Path & "\" & myChart.Name & ".gif"
+    myChart.Export FileName, "GIF"
+    'delete chart
+    ActiveSheet.ChartObjects(myChart.Parent.Name).Delete
+    FrmChart.ImageChart.Picture = stdole.LoadPicture(FileName)
+    
+    FrmChart.Show
+    'delete file
+    Kill FileName
+    
+    Worksheets("UserForm").Select
+    Application.ScreenUpdating = True
+    
+End Sub
