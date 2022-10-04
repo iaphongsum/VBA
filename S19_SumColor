@@ -1,0 +1,26 @@
+Function Sum_Color(MatchColor As Range, sumRange As Range) As Double
+
+    Dim cell As Range
+    Dim myColor As Long
+    
+    myColor = MatchColor.Cells(1, 1).Interior.Color
+    
+
+    For Each cell In sumRange
+        If cell.Interior.Color = myColor Then
+            Sum_Color = Sum_Color + cell.Value
+        End If
+    Next cell
+    
+End Function
+
+'auto-trigger the above function (among others) on the active sheet
+
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+    
+    'trigger the function calculation in the active sheet
+    If Not Intersect(Target, Range("A:C")) Is Nothing Then
+        ActiveSheet.Calculate
+    End If
+    
+End Sub
