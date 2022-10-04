@@ -1,0 +1,34 @@
+Sub my_column_chart()
+'
+' my_column_chart Macro
+'
+    Dim myChart As Chart
+    
+    If Selection.Cells.Count > 1 Then
+    
+        Set myChart = ActiveSheet.Shapes.AddChart2(201, xlColumnClustered).Chart
+        With myChart
+            .Axes(xlValue).MajorGridlines.Delete
+            .ChartGroups(1).GapWidth = 80
+            .FullSeriesCollection(1).ApplyDataLabels
+            .Axes(xlValue).Delete
+            
+            With .FullSeriesCollection(1).Format.Fill
+            
+                .Visible = msoTrue
+                .ForeColor.ObjectThemeColor = msoThemeColorBackground2
+                .ForeColor.TintAndShade = 0
+                .ForeColor.Brightness = -0.5
+                .Transparency = 0
+                .Solid
+            End With
+        End With
+        
+        Range("E10").Select
+        ActiveSheet.Shapes(myChart.Parent.Name).Line.Visible = msoFalse
+        Else
+            MsgBox "please select your source data first", vbInformation, "missing data"
+    
+    End If
+    
+End Sub
