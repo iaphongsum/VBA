@@ -1,0 +1,35 @@
+Function TextOnly(TextValue) As String
+
+    Dim i As Long
+    Dim t As String
+    
+    TextValue = Trim(TextValue)
+    
+    For i = 1 To Len(TextValue)
+        If Not IsNumeric(Mid(TextValue, i, 1)) Then
+            t = t & Mid(TextValue, i, 1)
+        End If
+    Next i
+    TextOnly = t
+
+End Function
+
+Function NumOnly(TextValue) As Variant
+
+    Dim i As Long
+    Dim n As Double
+    
+    TextValue = Trim(TextValue)
+    
+    For i = 1 To Len(TextValue)
+        If IsNumeric(Mid(TextValue, i, 1)) Then
+            n = n & Mid(TextValue, i, 1)
+        End If
+    Next i
+    If n > 0 Then
+        NumOnly = n
+    Else
+        NumOnly = ""
+    End If
+    
+End Function
