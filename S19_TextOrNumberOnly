@@ -33,3 +33,18 @@ Function NumOnly(TextValue) As Variant
     End If
     
 End Function
+
+'Use the above functions to make a sub procedue to hardcode the same result
+
+Sub split_text_number()
+
+    Dim myRange As Range
+    Dim cell As Range
+    
+    Set myRange = Range("A6", "A" & Cells(Rows.Count, 1).End(xlUp).Row)
+    For Each cell In myRange
+        cell.Offset(0, 1).Value = TextOnly(cell.Value)
+        cell.Offset(0, 2).Value = NumOnly(cell.Value)
+    Next cell
+
+End Sub
