@@ -1,0 +1,15 @@
+Function TheAge(myDate As Date) As String
+
+    Dim myMonths As Long
+    Dim myYears As Long
+    
+    myMonths = Month(Date) - Month(myDate)
+    myYears = Year(Date) - Year(myDate)
+    
+    If myMonths < 0 Then
+        myYears = myYears - 1
+        myMonths = 12 - VBA.Abs(myMonths)
+    End If
+    
+    
+    TheAge = myYears & " Years & " & myMonths & " Months"
